@@ -1,0 +1,60 @@
+
+html{
+    background-image: url("assets/home.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.con{
+    position: relative;
+
+}
+.wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px ;
+}
+
+.ancients{
+    display: flex;
+    gap: 2vh;
+    justify-content: center;
+}
+
+.anc__card{
+    width: 10%;
+    border: solid rgb(204, 164, 164) 2px;
+    transition: all .2s;
+}
+
+
+.complexitys{
+    display: flex;
+    gap: 2vh;
+}
+
+.complexity{
+    border: solid rgb(204, 164, 164) 2px;
+    padding: 5px;
+    border-radius: 3px;
+    color: #fff;
+    transition: all .2s;
+
+}
+
+.complexity:active{
+    background-color: red;
+    transition: all .2s;
+}
+
+
+.anc__card:active{
+    border: solid red 2px;
+    transition: all .2s;
+
+}
