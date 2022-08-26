@@ -16,7 +16,7 @@ html{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 4vh;
     margin-top: 30px ;
 }
 
@@ -27,15 +27,19 @@ html{
 }
 
 .anc__card{
-    width: 10%;
+    width: 14%;
     border: solid rgb(204, 164, 164) 2px;
     transition: all .2s;
 }
 
 
 .complexitys{
-    display: flex;
+    display: none;
     gap: 2vh;
+}
+
+.flex{
+    display: flex;
 }
 
 .complexity{
@@ -53,8 +57,80 @@ html{
 }
 
 
+
 .anc__card:active{
     border: solid red 2px;
     transition: all .2s;
 
+}
+
+
+
+.red{
+    border: solid red 2px;
+}
+
+
+
+
+
+/* ------------------------ GAME ---------------------------- */
+
+
+
+.game{
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10vh;
+}
+
+.stages{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+}
+
+.title__stage{
+    color: #fff;
+    font-size: 24px;
+}
+.stage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:  1vh;
+}
+.card__number{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity{
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+}
+
+.deck{
+    width: min-content;
+    height: auto;
+}
+
+.deck__card{
+    width: 200px;
+    height: auto;
+}
+
+.open__card{
+    width: min-content;
+    height: auto;
+}
+
+.card{
+    width: 200px;
+    height: auto;
 }
