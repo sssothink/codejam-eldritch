@@ -3,30 +3,72 @@ const Ct = document.getElementById('Ct');
 const So = document.getElementById('So');
 const Sh = document.getElementById('Sh');
 const complexitys = document.querySelector('.complexitys');
+const complexity = document.querySelectorAll('.complexity');
+const go = document.querySelector('.go');
+const game = document.querySelector('.game');
+const ancCard = document.querySelectorAll('.anc__card');
+const deckCard = document.querySelector('.deck__card');
+const veryEasy = document.querySelector('.very__easy');
+const easy = document.querySelector('.easy');
+const normal = document.querySelector('.normal');
+const hard = document.querySelector('.hard');
+const veryHard = document.querySelector('.very__hard');
 
 
 
 
 
-Az.addEventListener('click', () => {
-    complexitys.classList.add('flex');
-    Az.classList.add('red')
-})
+for (let i = 0; i < ancCard.length; i++) {
+    ancCard[i].addEventListener('click', () => {
+        complexitys.classList.add('flex');
+        for (let k = 0; k<ancCard.length; k++){
+            ancCard[k].classList.remove('red'); 
+        };
+        for (let k = 0; k<complexity.length; k++){
+            complexity[k].classList.remove('redCo'); 
+        };
+        game.classList.remove('flex');
+        go.classList.remove('flex');
+        ancCard[i].classList.add('red');  
+    })
 
-Ct.addEventListener('click', () => {
-    complexitys.classList.add('flex');
-    Ct.classList.add('red')
-})
+};
 
-So.addEventListener('click', () => {
-    complexitys.classList.add('flex');
-    So.classList.add('red')
-})
+for (let i = 0; i<complexity.length; i++ ) {
+    complexity[i].addEventListener('click', () => {
+        game.classList.remove('flex');
+        go.classList.add('flex');
+        for (let k = 0; k<complexity.length; k++){
+            complexity[k].classList.remove('redCo'); 
+        };
+        complexity[i].classList.add('redCo');
+    })
 
-Sh.addEventListener('click', () => {
-    complexitys.classList.add('flex');
-    Sh.classList.add('red')
-})
+}
+
+
+
+
+
+// Az.addEventListener('click', () => {
+
+//     Az
+// })
+
+// Ct.addEventListener('click', () => {
+//     complexitys.classList.add('flex');
+//     Ct.classList.add('red')
+// })
+
+// So.addEventListener('click', () => {
+//     complexitys.classList.add('flex');
+//     So.classList.add('red')
+// })
+
+// Sh.addEventListener('click', () => {
+//     complexitys.classList.add('flex');
+//     Sh.classList.add('red')
+// })
 
 
 
@@ -398,7 +440,146 @@ const veryEasyMixSh = () => {
 
 }
 
-veryEasyMixSh();
+// veryEasyMixSh();
+
+// ------------------- EASY -----------------------------------------
+
+
+const easyMix = () => {
+    azathothEasyDeck = brownNorm.concat(brownEasy).concat(blueEasy).concat(blueNorm).concat(greenEasy).concat(greenNorm);
+}
+
+
+// -------------------- NORM ------------------------------------------
+
+const normMix = () => {
+    azathothEasyDeck = brownNorm.concat(brownEasy).concat(blueEasy).concat(blueNorm).concat(greenEasy).concat(greenNorm).concat(greenHard).concat(brownHard).concat(blueHard);
+}
+
+
+
+// -------------------- HARD ----------------------------------------
+
+
+const hardMix = () => {
+    azathothEasyDeck = brownNorm.concat(blueNorm).concat(greenNorm).concat(greenHard).concat(brownHard).concat(blueHard);
+}
+
+
+// --------------------- VERY HARD ----------------------------------------
+
+
+const veryHardMixAz = () => {
+    for (let i = 0; i < greenAz; i++) {
+        azathothEasyDeck.push(greenHard.splice(0, 1)[0])
+        // console.log('tgtg');
+    };
+    for (let i = 0; i < brownAz; i++) {
+        if (brownHard.length === 0) {
+            azathothEasyDeck.push(brownNorm.splice(0, 1)[0])
+        } else {
+            azathothEasyDeck.push(brownHard.splice(0, 1)[0])
+        }
+        // console.log('tgtg');
+    };
+    for (let i = 0; i < blueAz; i++) {
+        azathothEasyDeck.push(blueHard.splice(0, 1)[0])
+        // console.log('tgtg');
+    };
+}
+
+
+const veryHardMixCt = () => {
+    for (let i = 0; i < greenCt; i++) {
+        azathothEasyDeck.push(greenHard.splice(0, 1)[0])
+        // console.log('tgtg');
+    };
+    for (let i = 0; i < brownCt; i++) {
+        if (brownHard.length === 0) {
+            azathothEasyDeck.push(brownNorm.splice(0, 1)[0])
+        } else {
+            azathothEasyDeck.push(brownHard.splice(0, 1)[0])
+        }
+        // console.log('tgtg');
+    };
+    for (let i = 0; i < blueCt; i++) {
+        azathothEasyDeck.push(blueHard.splice(0, 1)[0])
+        // console.log('tgtg');
+    };
+}
+
+const veryHardMixSo = () => {
+    for (let i = 0; i < greenSo; i++) {
+        azathothEasyDeck.push(greenHard.splice(0, 1)[0])
+        // console.log('tgtg');
+    };
+    for (let i = 0; i < brownSo; i++) {
+        if (brownHard.length === 0) {
+            azathothEasyDeck.push(brownNorm.splice(0, 1)[0])
+        } else {
+            azathothEasyDeck.push(brownHard.splice(0, 1)[0])
+        }
+        // console.log('tgtg');
+    };
+    for (let i = 0; i < blueSo; i++) {
+        azathothEasyDeck.push(blueHard.splice(0, 1)[0])
+        // console.log('tgtg');
+    };
+}
+
+
+const veryHardMixSh = () => {
+    for (let i = 0; i < greenSh; i++) {
+        if (greenHard.length === 0) {
+            azathothEasyDeck.push(greenNorm.splice(0, 1)[0])
+        } else {
+            azathothEasyDeck.push(greenHard.splice(0, 1)[0])
+        }
+        // console.log('tgtg');
+    };
+    for (let i = 0; i < brownSh; i++) {
+        if (brownHard.length === 0) {
+            azathothEasyDeck.push(brownNorm.splice(0, 1)[0])
+        } else {
+            azathothEasyDeck.push(brownHard.splice(0, 1)[0])
+        }
+        // console.log('tgtg');
+    };
+    for (let i = 0; i < blueSh; i++) {
+        azathothEasyDeck.push(blueHard.splice(0, 1)[0])
+        // console.log('tgtg');
+    };
+}
+
+
+
+// ----------------------------------------LOGIC ----------
+// 
+//                             LOGIC
+// 
+// ---------------- LOGIC -------------------------------
+
+
+
+go.addEventListener('click', () => {
+    if (Az.classList.contains('red')) {
+        if (veryEasy.classList.contains('redCo')) {
+            veryEasyMixAz();
+        } else {
+            veryHardMixAz();
+        };
+    } else {
+        veryEasyMixAz();
+    };
+    go.classList.remove('flex');
+    game.classList.add('flex');
+});
+
+
+
+
+// go.addEventListener('click', 
+// veryEasyMixAz());
 
 
 
@@ -415,6 +596,15 @@ veryEasyMixSh();
 
 
 
+
+
+
+
+deckCard.addEventListener('click', () => {
+    
+})
+
+// veryHardMixSh()
 
 
 
@@ -436,7 +626,7 @@ function arrayRandElement(arr) {
 const openCard = document.querySelector('.open__card');
 openCard.appendChild(arrayRandElement(azathothEasyDeck));
 
-console.log(brownss);
+
 console.log(azathothEasyDeck);
 
 // console.log(openCard.childNodes[1])

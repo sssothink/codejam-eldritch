@@ -36,11 +36,11 @@ html{
 .complexitys{
     display: none;
     gap: 2vh;
+    transition: all 0.3s;
+
 }
 
-.flex{
-    display: flex;
-}
+
 
 .complexity{
     border: solid rgb(204, 164, 164) 2px;
@@ -51,12 +51,11 @@ html{
 
 }
 
-.complexity:active{
+
+.redCo{
     background-color: red;
     transition: all .2s;
 }
-
-
 
 .anc__card:active{
     border: solid red 2px;
@@ -72,6 +71,15 @@ html{
 
 
 
+.go{
+    display: none;
+    border: solid rgb(204, 164, 164) 2px;
+    padding: 5px;
+    border-radius: 3px;
+    color: #fff;
+    transition: all .2s;
+}
+
 
 
 /* ------------------------ GAME ---------------------------- */
@@ -83,8 +91,13 @@ html{
     justify-content: center;
     align-items: flex-start;
     gap: 10vh;
-}
+    transition: all 0.3s;
 
+}
+.flex{
+    display: flex;
+    transition: all 0.3s;
+}
 .stages{
     display: flex;
     flex-direction: column;
