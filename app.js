@@ -20,6 +20,7 @@ const openCard = document.querySelector('.open__card');
 
 for (let i = 0; i < ancCard.length; i++) {
     ancCard[i].addEventListener('click', () => {
+
         if (openCard.querySelectorAll('.card').length > 0) {
             openCard.removeChild(openCard.querySelector('.card'));
         };
@@ -40,9 +41,11 @@ for (let i = 0; i < ancCard.length; i++) {
 };
 
 for (let i = 0; i<complexity.length; i++ ) {
-    complexity[i].addEventListener('click', () => {       
+    complexity[i].addEventListener('click', () => {   
+
         if (openCard.querySelectorAll('.card').length > 0) {
             openCard.removeChild(openCard.querySelector('.card'));
+            
         };
         game.classList.remove('flex');
         go.classList.add('flex');
@@ -202,7 +205,69 @@ green16.src = "./assets/MythicCards/green/green16.png";
 green17.src = "./assets/MythicCards/green/green17.png";
 green18.src = "./assets/MythicCards/green/green18.png";
 
-let brownss = [
+
+
+
+
+
+let greenAz1 = 1;
+let greenAz2 = 2;
+let greenAz3 = 2;
+let greenAz = greenAz1+greenAz2+greenAz3;
+
+
+
+let brownAz1 = 2;
+let brownAz2 = 3;
+let brownAz3 = 4;
+let brownAz = brownAz1+brownAz2+brownAz3;
+
+
+let blueAz1 = 1;
+let blueAz2 = 1;
+let blueAz3 = 0;
+let blueAz = blueAz1 + blueAz2 + blueAz3;
+
+
+
+
+let greenCt = 4;
+let brownCt = 9;
+let blueCt = 2;
+
+let greenSo = 5;
+let brownSo = 9;
+let blueSo = 2;
+
+let greenSh = 6;
+let brownSh = 8;
+let blueSh = 2;
+
+
+
+
+
+const stage1green = document.getElementById('stage1__green');
+const stage1red = document.getElementById('stage1__red');
+const stage1blue = document.getElementById('stage1__blue');
+const stage2green = document.getElementById('stage2__green');
+const stage2red = document.getElementById('stage2__red');
+const stage2blue = document.getElementById('stage2__blue');
+const stage3green = document.getElementById('stage3__green');
+const stage3red = document.getElementById('stage3__red');
+const stage3blue = document.getElementById('stage3__blue');
+
+
+
+
+
+
+
+
+
+
+
+const brownss = [
     brown1,
     brown2,
     brown3,
@@ -234,7 +299,7 @@ let brownss = [
 // ----------------BROWN-----------
 
 
-let brownEasy = [
+const brownEasy = [
     brown11,
     brown12,
     brown13,
@@ -242,7 +307,7 @@ let brownEasy = [
     brown21,
 ]
 
-let brownNorm = [
+const brownNorm = [
     brown1,
     brown2,
     brown3,
@@ -257,7 +322,7 @@ let brownNorm = [
     brown20,
 ]
 
-let brownHard = [
+const brownHard = [
     brown6,
     brown7,
     brown8,
@@ -269,21 +334,21 @@ let brownHard = [
 
 // ---------------BLUE-----------------
 
-let blueEasy = [
+const blueEasy = [
     blue3,
     blue4,
     blue5,
     blue10,
 ]
 
-let blueNorm = [
+const blueNorm = [
     blue7,
     blue9,
     blue11,
     blue12,
 ]
 
-let blueHard = [
+const blueHard = [
     blue1,
     blue2,
     blue6,
@@ -293,7 +358,7 @@ let blueHard = [
 
 // ----------------GREEN---------------------
 
-let greenEasy = [
+const greenEasy = [
     green1,
     green12,
     green16,
@@ -301,7 +366,7 @@ let greenEasy = [
     green18,
 ]
 
-let greenNorm = [
+const greenNorm = [
     green7,
     green8,
     green9,
@@ -312,7 +377,7 @@ let greenNorm = [
     green15,
 ]
 
-let greenHard = [
+const greenHard = [
     green2,
     green3,
     green4,
@@ -320,53 +385,6 @@ let greenHard = [
     green6,
 ]
 
-
-
-let greenAz = 5;
-let brownAz = 9;
-let blueAz = 2;
-
-
-
-
-
-
-
-
-
-
-
-
-
-let greenCt = 4;
-let brownCt = 9;
-let blueCt = 2;
-
-let greenSo = 5;
-let brownSo = 9;
-let blueSo = 2;
-
-let greenSh = 6;
-let brownSh = 8;
-let blueSh = 2;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let azathothEasyDeck = [];
 
 
 
@@ -590,7 +608,7 @@ const veryHardMixSh = () => {
         // console.log('tgtg');
     };
 }
-
+let azathothEasyDeck = [];
 
 
 // ----------------------------------------LOGIC ----------
@@ -614,6 +632,47 @@ go.addEventListener('click', () => {
     go.classList.remove('flex');
     game.classList.add('flex');
 
+    if (Az.classList.contains('red')) {
+        if (veryEasy.classList.contains('redCo')) {
+
+
+
+
+            if (azathothEasyDeck.length < 1) {
+                stage1green.innerHTML = greenAz1;
+                stage1red.innerHTML = brownAz1;
+                stage1blue.innerHTML = blueAz1;
+                let stage1Az = [];
+                
+                stage1Az.push(randomElem(greenEasy))
+                
+
+                stage2green.innerHTML = greenAz2;
+                stage2red.innerHTML = brownAz2;
+                stage2blue.innerHTML = blueAz2;
+                stage3green.innerHTML = greenAz3;
+                stage3red.innerHTML = brownAz3;
+                stage3blue.innerHTML = blueAz3;
+
+                veryEasyMixAz();  
+            };
+
+        } else if (easy.classList.contains('redCo')) {
+            if (azathothEasyDeck.length < 1) {
+                easyMix();
+            }
+        } else if (normal.classList.contains('redCo')) {
+            if (azathothEasyDeck.length < 1) {
+                normMix();
+            }
+        } else if (hard.classList.contains('redCo')) {
+            if (azathothEasyDeck.length < 1) {
+                hardMix();
+            }
+        };
+    } else {
+        // veryEasyMixAz();
+    };
 
 });
 
@@ -636,23 +695,12 @@ go.addEventListener('click', () => {
 
 
 deckCard.addEventListener('click', () => {
+
+    // if (azathothEasyDeck.length = 1) {
+    //     deckCard.remove();
+    // };
     if (openCard.querySelectorAll('.card').length > 0) {
         openCard.removeChild(openCard.querySelector('.card'));
-    };
-    if (Az.classList.contains('red')) {
-        if (veryEasy.classList.contains('redCo')) {
-            if (azathothEasyDeck.length < 1) {
-                veryEasyMixAz();  
-            }
-        } else if (easy.classList.contains('redCo')) {
-            easyMix();
-        } else if (normal.classList.contains('redCo')) {
-            normMix();
-        } else if (hard.classList.contains('redCo')) {
-            hardMix();
-        }
-    } else {
-        // veryEasyMixAz();
     };
     openCard.appendChild(premier(azathothEasyDeck));
     let fChild = openCard.childNodes[1];
@@ -667,19 +715,20 @@ deckCard.addEventListener('click', () => {
 
 
 
-const premier = (arr) => {
-    
-for (let i = 0; i<arr.length; i++ ){    
-    arr.pop(arr[i]);
-    return arr[i]
+const premier = (arr) => { 
+    return arr.pop()
 }
+
+
+const randomElem = (arr, q) => {
+    let rand = Math.floor(Math.random() * arr.length);
+    return arr[rand]
 }
-function arrayRandElement(arr) {
-    const rand = Math.floor(Math.random() * arr.length);
-    arr.pop(rand);
-    return arr[rand];
-}
-console.log(azathothEasyDeck.length)
+
+
+
+
+// console.log(randomItems)
 
 
 

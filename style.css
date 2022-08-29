@@ -98,6 +98,35 @@ html{
     display: flex;
     transition: all 0.3s;
 }
+
+
+.green{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    border-radius: 15px;
+    color: #fff;
+    font-size:larger;
+}
+.redN{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border-radius: 15px;
+    color: #fff;
+    font-size:larger;
+}
+.blue{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    border-radius: 15px;
+    color: #fff;
+    font-size:larger;
+}
 .stages{
     display: flex;
     flex-direction: column;
@@ -123,9 +152,10 @@ html{
 }
 
 .quantity{
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
+    width: 30px;
+    height: 30px;
+
+
 }
 
 .deck{
