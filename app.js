@@ -13,13 +13,16 @@ const easy = document.querySelector('.easy');
 const normal = document.querySelector('.normal');
 const hard = document.querySelector('.hard');
 const veryHard = document.querySelector('.very__hard');
-
+const openCard = document.querySelector('.open__card');
 
 
 
 
 for (let i = 0; i < ancCard.length; i++) {
     ancCard[i].addEventListener('click', () => {
+        if (openCard.querySelectorAll('.card').length > 0) {
+            openCard.removeChild(openCard.querySelector('.card'));
+        };
         complexitys.classList.add('flex');
         for (let k = 0; k<ancCard.length; k++){
             ancCard[k].classList.remove('red'); 
@@ -30,18 +33,24 @@ for (let i = 0; i < ancCard.length; i++) {
         game.classList.remove('flex');
         go.classList.remove('flex');
         ancCard[i].classList.add('red');  
+
+
     })
 
 };
 
 for (let i = 0; i<complexity.length; i++ ) {
-    complexity[i].addEventListener('click', () => {
+    complexity[i].addEventListener('click', () => {       
+        if (openCard.querySelectorAll('.card').length > 0) {
+            openCard.removeChild(openCard.querySelector('.card'));
+        };
         game.classList.remove('flex');
         go.classList.add('flex');
         for (let k = 0; k<complexity.length; k++){
-            complexity[k].classList.remove('redCo'); 
+            complexity[k].classList.remove('redCo');
         };
         complexity[i].classList.add('redCo');
+
     })
 
 }
@@ -311,11 +320,23 @@ let greenHard = [
     green6,
 ]
 
-let azathothEasyDeck = [];
+
 
 let greenAz = 5;
 let brownAz = 9;
 let blueAz = 2;
+
+
+
+
+
+
+
+
+
+
+
+
 
 let greenCt = 4;
 let brownCt = 9;
@@ -332,15 +353,35 @@ let blueSh = 2;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+let azathothEasyDeck = [];
+
+
+
+
 // ---------------- VERY EASY ------------------------------------
 
 
 
 const veryEasyMixAz = () => {
+
     for (let i = 0; i < greenAz; i++) {
         azathothEasyDeck.push(greenEasy.splice(0, 1)[0])
         // console.log('tgtg');
     };
+       
     for (let i = 0; i < brownAz; i++) {
         if (brownEasy.length === 0) {
             azathothEasyDeck.push(brownNorm.splice(0, 1)[0])
@@ -348,11 +389,13 @@ const veryEasyMixAz = () => {
             azathothEasyDeck.push(brownEasy.splice(0, 1)[0])
         }
         // console.log('tgtg');
-    };
+    }; 
+
     for (let i = 0; i < blueAz; i++) {
         azathothEasyDeck.push(blueEasy.splice(0, 1)[0])
         // console.log('tgtg');
-    };
+    }; 
+    //    console.log('gggg')
 }
 
 // veryEasyMixAz();
@@ -472,7 +515,6 @@ const hardMix = () => {
 const veryHardMixAz = () => {
     for (let i = 0; i < greenAz; i++) {
         azathothEasyDeck.push(greenHard.splice(0, 1)[0])
-        // console.log('tgtg');
     };
     for (let i = 0; i < brownAz; i++) {
         if (brownHard.length === 0) {
@@ -480,11 +522,9 @@ const veryHardMixAz = () => {
         } else {
             azathothEasyDeck.push(brownHard.splice(0, 1)[0])
         }
-        // console.log('tgtg');
     };
     for (let i = 0; i < blueAz; i++) {
         azathothEasyDeck.push(blueHard.splice(0, 1)[0])
-        // console.log('tgtg');
     };
 }
 
@@ -559,28 +599,23 @@ const veryHardMixSh = () => {
 // 
 // ---------------- LOGIC -------------------------------
 
+// const ggg = () => {
 
+    // go.classList.remove('flex');
+    // game.classList.add('flex');
+// }
+
+// go.addEventListener('click', veryHardMixAz);
+
+// veryHardMixAz();
 
 go.addEventListener('click', () => {
-    if (Az.classList.contains('red')) {
-        if (veryEasy.classList.contains('redCo')) {
-            veryEasyMixAz();
-        } else {
-            veryHardMixAz();
-        };
-    } else {
-        veryEasyMixAz();
-    };
+
     go.classList.remove('flex');
     game.classList.add('flex');
+
+
 });
-
-
-
-
-// go.addEventListener('click', 
-// veryEasyMixAz());
-
 
 
 
@@ -601,18 +636,50 @@ go.addEventListener('click', () => {
 
 
 deckCard.addEventListener('click', () => {
-    
+    if (openCard.querySelectorAll('.card').length > 0) {
+        openCard.removeChild(openCard.querySelector('.card'));
+    };
+    if (Az.classList.contains('red')) {
+        if (veryEasy.classList.contains('redCo')) {
+            if (azathothEasyDeck.length < 1) {
+                veryEasyMixAz();  
+            }
+        } else if (easy.classList.contains('redCo')) {
+            easyMix();
+        } else if (normal.classList.contains('redCo')) {
+            normMix();
+        } else if (hard.classList.contains('redCo')) {
+            hardMix();
+        }
+    } else {
+        // veryEasyMixAz();
+    };
+    openCard.appendChild(premier(azathothEasyDeck));
+    let fChild = openCard.childNodes[1];
+    fChild.classList.add('card');
+    console.log(azathothEasyDeck);
+    console.log(openCard.childNodes);
+    console.log(openCard);
+    console.log(azathothEasyDeck.length);
 })
 
 // veryHardMixSh()
 
 
 
-
+const premier = (arr) => {
+    
+for (let i = 0; i<arr.length; i++ ){    
+    arr.pop(arr[i]);
+    return arr[i]
+}
+}
 function arrayRandElement(arr) {
-    var rand = Math.floor(Math.random() * arr.length);
+    const rand = Math.floor(Math.random() * arr.length);
+    arr.pop(rand);
     return arr[rand];
 }
+console.log(azathothEasyDeck.length)
 
 
 
@@ -623,15 +690,13 @@ function arrayRandElement(arr) {
 
 
 
-const openCard = document.querySelector('.open__card');
-openCard.appendChild(arrayRandElement(azathothEasyDeck));
 
 
-console.log(azathothEasyDeck);
 
-// console.log(openCard.childNodes[1])
-let fChild = openCard.childNodes[1];
-fChild.classList.add('card');
+// console.log(azathothEasyDeck);
+
+
+
 // console.log(cards[2]);
 
 
